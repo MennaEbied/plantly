@@ -2,6 +2,7 @@ import {  View, StyleSheet ,Button } from "react-native";
 import { theme } from "@/theme";
 import { useUserStore } from "@/store/userStore";
 import { useRouter } from "expo-router";
+import { PlantlyButton } from "@/component/PlantlyButton";
 
 export default function OnboardingScreen() {
 
@@ -14,7 +15,7 @@ export default function OnboardingScreen() {
     }
   return (
     <View style={styles.container}>
-      <Button title="Let me in!" onPress={handlePress} />
+      <PlantlyButton title="Let me in!" onPress={handlePress} />
     </View>
   );
 }
