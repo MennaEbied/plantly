@@ -10,10 +10,14 @@ import {
   import { PlantlyButton } from "@/component/PlantlyButton";
   import { useState } from "react";
   import { PlantlyImage } from "@/component/PlantlyImage";
+import { usePlantStore } from "@/store/plantsStore";
+import { useRouter } from "expo-router";
   
   export default function NewScreen() {
     const [name, setName] = useState<string>();
     const [days, setDays] = useState<string>();
+    const addPlant=usePlantStore((state)=>state.addPlant);
+    const router=useRouter();
   
     const handleSubmit = () => {
       if (!name) {
@@ -33,8 +37,10 @@ import {
           "Watering frequency must be a be a number",
         );
       }
-  
-      console.log("Adding plant", name, days);
+
+      addPlant(name,Number(days));
+      router.navigate("/");
+
     };
   
     return (
